@@ -1,0 +1,18 @@
+# Sobe um PostgreSQL local para desenvolvimento.
+# Uso:  docker compose up -d   (liga)   |   docker compose down   (desliga)
+services:
+  db:
+    image: postgres:16
+    container_name: snipvault_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: snipvault
+      POSTGRES_PASSWORD: snipvault
+      POSTGRES_DB: snipvault
+    ports:
+      - "5432:5432"
+    volumes:
+      - snipvault_pgdata:/var/lib/postgresql/data
+
+volumes:
+  snipvault_pgdata:
